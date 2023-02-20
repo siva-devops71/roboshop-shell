@@ -44,7 +44,7 @@ print_head "Install MongoDB Client"
 yum install mongodb-org-shell -y &>>${log_file}
 
 print_head "Load Schema"
-mongo --host mongodb.devops71.online </app/schema/catalogue.js
+mongo --host mongodb.devops71.online </app/schema/catalogue.js &>>${log_file}
 
 
 ## To check error in file we use cat /tmp/roboshop.log
