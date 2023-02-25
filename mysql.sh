@@ -6,7 +6,6 @@ if [ -z "${mysql_root_password}" ]; then
   exist 1
 fi
 
-
 print_head "Disabling Mysql 8 version"
 dnf module disable mysql -y &>>${log_file}
 status_check $?
@@ -27,10 +26,9 @@ print_head "Start Mysql Service"
 systemctl start mysqld &>>${log_file}
 status_check $?
 
-
 print_head "Set Root Password"
 echo show databases | mysql -uroot -p${mysql_root_password} &>>${log_file}
 if [ $? -ne 0 ]; then
-    mysql_secure_installation --set-root-pass ${mysql_root_password} &>>${log_file}
+   mysql_secure_installation --set-root-pass ${mysql_root_password} &>>${log_file}
 fi
 status_check $?
