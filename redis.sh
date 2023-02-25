@@ -1,6 +1,6 @@
 source common.sh
 
-print_head "Installing Redis Repo File"
+print_head "Insatlling Redis Repo files"
 yum install https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y &>>${log_file}
 status_check $?
 
@@ -12,14 +12,14 @@ print_head "Install Redis"
 yum install redis -y &>>${log_file}
 status_check $?
 
-print_head "update Redis Listen Address"
-sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/redis.conf /etc/redis/redis.conf &>>${log_file}
+print_head "Update Redis Listen Address"
+sed -i -e 's/127.0.0.1/0.0.0.0/' //etc/redis.conf /etc/redis/redis.conf &>>${log_file}
 status_check $?
 
-print_head "Enable redis"
+print_head "Enable Redis"
 systemctl enable redis &>>${log_file}
 status_check $?
 
-print_head "start redis"
-systemctl restart redis &>>${log_file}
+print_head "Start Redis"
+systemctl start redis &>>${log_file}
 status_check $?
