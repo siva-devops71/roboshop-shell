@@ -144,4 +144,3 @@ python() {
   # SystemD Function
   systemd_setup
 }
-}
